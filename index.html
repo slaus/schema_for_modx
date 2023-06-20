@@ -1,0 +1,168 @@
+[[*template:is=`1`:then=`
+    [[--$schema_organization--]]
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "[[%name? &namespace=`lang` &language=`[[++cultureKey]]`]]",
+          "alternateName": "[[%alternateName? &namespace=`lang` &language=`[[++cultureKey]]`]]",
+          "address": "[[pdoField? &id=`[[++site_start]]` &field=`adress`]]",
+          "url": "[[!++site_url]]",
+          "logo": "[[pdoField? &id=`[[++site_start]]` &field=`logo`]]",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "[[++cultureKey:is=`en`:then=`4916092297083`]][[++cultureKey:is=`ru`:then=`380677777230`]][[++cultureKey:is=`de`:then=`4916092297083`]]",
+            "email": "[[pdoField? &id=`[[++site_start]]` &field=`email`]]",
+            "contactType": "customer service",
+            "availableLanguage": ["English", "Germany", "Russian"]
+          }
+        }
+    </script>
+`]]
+[[*template:is=`9`:then=`
+    [[--$schema_breadcrumb--]]
+    [[pdoCrumbs?
+      &showHome=`1`
+      &tplWrapper=`@INLINE 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                [[+output]]
+            ]
+        }
+    </script>`
+      &tplHome=`@INLINE 
+                {
+                    "@type": "ListItem",
+                    "position": "{$idx}",
+                    "name": "{$menutitle}",
+                    "item": "[[!++site_url]]"
+                },`
+      &tpl=`@INLINE 
+                {
+                    "@type": "ListItem",
+                    "position": {$idx},
+                    "name": "{$menutitle}",
+                    "item": "[[!++site_url]][[+link]]"
+                },`
+      &tplCurrent=`@INLINE 
+                {
+                    "@type": "ListItem",
+                    "position": {$idx},
+                    "name": "{$menutitle}",
+                    "item": "[[!++site_url]][[+link]]"
+                }`
+    ]]
+
+    [[--$schema_service--]]
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "[[*pagetitle]]",
+            "description": "[[*seoDescription]]",
+            "url": "[[~[[*id]]? &scheme=`full`]]",
+            "provider": {
+                "@type": "Organization",
+                "name": "[[%name? &namespace=`lang` &language=`[[++cultureKey]]`]]",
+                "url": "[[!++site_url]]"
+            },
+            "areaServed": {
+                "@type": "AdministrativeArea",
+                "name": "[[pdoField? &id=`[[++site_start]]` &field=`adress`]]"
+            },
+            "category": "[[*pagetitle]]",
+            "serviceType": "[[*seoDescription]]",
+            "hoursAvailable": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                ],
+                "opens": "08:00",
+                "closes": "20:00"
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": "[[++cultureKey:is=`en`:then=`Upon Agreement`]][[++cultureKey:is=`ru`:then=`Договорная`]][[++cultureKey:is=`de`:then=`Nach Vereinbarung`]]",
+                "priceCurrency": "USD"
+            }
+        }
+    </script>
+`]]
+[[*template:is=`2`:then=`
+    [[*parent:is=`[[++cultureKey:is=`en`:then=`18`]][[++cultureKey:is=`ru`:then=`33`]][[++cultureKey:is=`de`:then=`67`]]`:then=`
+        [[--$schema_article--]]
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "[[~[[*id]]? &scheme=`full`]]"
+                },
+                "headline": "[[*pagetitle]]",
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "[[*img]]",
+                    "width": "400",
+                    "height": "300"
+                },
+                "datePublished": "[[*publishedon]]",
+                "dateModified": "[[*editedon]]",
+                "author": {
+                    "@type": "Person",
+                    "name": "Admin"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "[[%name? &namespace=`lang` &language=`[[++cultureKey]]`]]",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "[[pdoField? &id=`[[++site_start]]` &field=`logo`]]",
+                        "width": "400",
+                        "height": "300"
+                    }
+                },
+                "description": "[[*content:notags:ellipsis=`250`]]"
+            }
+        </script>
+    `]]
+    [[*parent:is=`[[++cultureKey:is=`en`:then=`8`]][[++cultureKey:is=`ru`:then=`29`]][[++cultureKey:is=`de`:then=`66`]]`:then=`
+        [[--$schema_news--]]
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "NewsArticle",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "[[~[[*id]]? &scheme=`full`]]"
+                },
+                "headline": "[[*pagetitle]]",
+                "image": [
+                    "[[*img]]"
+                ],
+                "datePublished": "[[*publishedon]]",
+                "dateModified": "[[*editedon]]",
+                "author": {
+                    "@type": "Person",
+                    "name": "Admin"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "[[%name? &namespace=`lang` &language=`[[++cultureKey]]`]]",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "[[pdoField? &id=`[[++site_start]]` &field=`logo`]]"
+                    }
+                },
+                "description": "[[*content:notags:ellipsis=`250`]]"
+            }
+        </script>
+    `]]
+`]]
