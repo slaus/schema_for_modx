@@ -1,5 +1,5 @@
 [[*template:is=`1`:then=`
-    [[--$schema_organization--]]
+    [[--home page template--]]
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -11,16 +11,17 @@
           "logo": "[[pdoField? &id=`[[++site_start]]` &field=`logo`]]",
           "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "[[++cultureKey:is=`en`:then=`4916092297083`]][[++cultureKey:is=`ru`:then=`380677777230`]][[++cultureKey:is=`de`:then=`4916092297083`]]",
+            "telephone": "+16138677767",
             "email": "[[pdoField? &id=`[[++site_start]]` &field=`email`]]",
             "contactType": "customer service",
-            "availableLanguage": ["English", "Germany", "Russian"]
+            "availableLanguage": ["English", "Germany", "French", "Ukrainian", "Russian"]
           }
         }
     </script>
 `]]
 [[*template:is=`9`:then=`
-    [[--$schema_breadcrumb--]]
+    [[--service page template--]]
+    [[--breadcrumb--]]
     [[pdoCrumbs?
       &showHome=`1`
       &tplWrapper=`@INLINE 
@@ -56,7 +57,7 @@
                 }`
     ]]
 
-    [[--$schema_service--]]
+    [[--service--]]
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -89,15 +90,16 @@
             },
             "offers": {
                 "@type": "Offer",
-                "price": "[[++cultureKey:is=`en`:then=`Upon Agreement`]][[++cultureKey:is=`ru`:then=`Договорная`]][[++cultureKey:is=`de`:then=`Nach Vereinbarung`]]",
+                "price": "[[++cultureKey:is=`en`:then=`Upon Agreement`]][[++cultureKey:is=`de`:then=`Nach Vereinbarung`]][[++cultureKey:is=`fr`:then=`Sur accord`]][[++cultureKey:is=`uk`:then=`Договірна`]][[++cultureKey:is=`ru`:then=`Договорная`]]",
                 "priceCurrency": "USD"
             }
         }
     </script>
 `]]
 [[*template:is=`2`:then=`
-    [[*parent:is=`[[++cultureKey:is=`en`:then=`18`]][[++cultureKey:is=`ru`:then=`33`]][[++cultureKey:is=`de`:then=`67`]]`:then=`
-        [[--$schema_article--]]
+    [[--news-articles page template--]]
+    [[*parent:is=`[[++cultureKey:is=`en`:then=`18`]][[++cultureKey:is=`de`:then=`67`]][[++cultureKey:is=`fr`:then=`20`]][[++cultureKey:is=`uk`:then=`5`]][[++cultureKey:is=`ru`:then=`33`]]`:then=`
+        [[--article--]]
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -134,7 +136,7 @@
         </script>
     `]]
     [[*parent:is=`[[++cultureKey:is=`en`:then=`8`]][[++cultureKey:is=`ru`:then=`29`]][[++cultureKey:is=`de`:then=`66`]]`:then=`
-        [[--$schema_news--]]
+        [[--news--]]
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
